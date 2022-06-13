@@ -5,7 +5,8 @@ Lab 1: Configuring ATI via the F5 BIGIP iApp
 -----------
  Navigate to https://www.f5.com/cloud, select login at the top right and finally select your account type to login.
 
- .. note:: You can sign up for a free account for the F5 Distributed Cloud in case you don't have an account yet by following the `sign up description <https://github.com/f5devcentral/f5-waap/blob/main/step-1-signup-deploy/voltConsole.rst>`_ or just go directly to the sign up page https://console.ves.volterra.io/signup/usage_plan.
+ .. note::
+     You can sign up for a free account for the F5 Distributed Cloud in case you don't have an account yet by following the `sign up description <https://github.com/f5devcentral/f5-waap/blob/main/step-1-signup-deploy/voltConsole.rst>`_ or just go directly to the sign up page https://console.ves.volterra.io/signup/usage_plan.
 
  .. image:: ../_static/csd-login.png
 
@@ -32,8 +33,6 @@ Lab 1: Configuring ATI via the F5 BIGIP iApp
  From the "App Application" slideout select "BIGIP iApp" and click **Next**.
 
  From step 2 click the **Download Template** button. This will download F5_APG.zip; take note of where you download this file and open it.  This should extract **f5.apg.analytics.tmpl**.
-
- .. note:: You should not share this iApp template with others as the iApp contains information specific to your F5XC tenant.
  
  From step 4 copy the JS tag.
 
@@ -54,7 +53,8 @@ Lab 1: Configuring ATI via the F5 BIGIP iApp
 
  In the Import screen, click **Choose File**. From the file window, find and select the "f5.apg.analytics.tmpl" file you downloaded and extracted in the previous step. Click **Upload**.  On the popup window, click **OK** to confirm you want to proceed with installing the template file on the BIGIP.
 
- .. note:: Take note that there was already a template named "f5.apg_analytics" that was pre-installed and ships with TMOS 16.1.  The template you just uploaded is named "f5.apg.analytics" and has some slight but important differences from the pre-installed template.
+ .. note::
+     Take note that there was already a template named "f5.apg_analytics" that was pre-installed and ships with TMOS 16.1.  The template you just uploaded is named "f5.apg.analytics" and has some slight but important differences from the pre-installed template.
 
  .. image:: ../_static/ati-iapp-templates.png
 
@@ -68,13 +68,15 @@ Lab 1: Configuring ATI via the F5 BIGIP iApp
  .. image:: ../_static/ati-iapp-create.png
 
  In the New Application Service window, complete the following fields:
- .. note:: Ensure that you select the "f5.apg.analytics" template that you installed in the previous step.  This should be the first temasplte listed.
+ .. note::
+     Ensure that you select the "f5.apg.analytics" template that you installed in the previous step.  This should be the first temasplte listed.
 
  * Enter a name in the Name field.
  * From the Template dropdown, select the "f5.apg.analytics" template.
  * In the JS Injection Configuration, paste the JS tag that you copied from the F5XC ATI dashboard.
  * In the Virtual Server Configuration, move the "Juice_Shop_VS" to the selected virtual servers but selecting it and clicking the "<<" button.
- .. note:: If you no longer have the JS tag in your clipboard you can follow the directions in step 3 of this guide to copy the JS tag again.
+ .. note::
+     If you no longer have the JS tag in your clipboard you can follow the directions in step 3 of this guide to copy the JS tag again.
 
  .. image:: ../_static/ati-iapp-config.png
 
