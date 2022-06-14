@@ -124,3 +124,35 @@ During this time you can use your local terminal to send more cURL requests or m
 4. Reviewing Data in the Application Threat Insights Dashboard
 ----------------------------------------------------------------
 
+.. warning::
+    Because the Application Threat Insights dashboard is intended only to provide a high-level analysis of web application traffic the dashboard does not provide real-time updates of requests.  Traffic analyzed by ATI can take over an hour to reflect in the dashboard graphs.
+
+    Please be patient and know that your data will eventully show up in the dashboard.
+    
+    While you are waiting you can continue to send traffic to your JuiceShop app.  But remember if you use any ohter methods to send traffic that you must include the **udf.sid** cookie or it will not make it to your UDF BIGIP and so will not be reported to ATI.
+
+
+In your browser return to the F5XC ATI dashboard.  If you have been away from this tab for a while, you may be prompted to reauthenticate.
+
+Device Dashboard
+^^^^^^^^^^^^^^^^^^^^
+
+From the left-hand menu select the "Dashboard".
+
+The Device Dashboard provides a high-level overview of the devices accessing your web applications.  Each of the graphs and tables provides some insights into those devices; how many unique devices, how many devices return to your websites, how long these devices have been known to your system, etc.
+Also, there are insights into the relationship of those devices with other identifers such as User-Agent and ASNs.
+
+ .. image:: ../_static/ati-device-dashboard.png
+
+ .. image:: ../_static/ati-device-dashboard2.png
+|
+
+Bot Assessment Dashboard
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+From the left-hand menu select the "Bot Assessment".
+
+The Bot Assessment Dashboard provides a high-level overview of suspected automation to your web applications including the top ASNs that are the source of this traffic, and the top URLs that are targets of the automation.
+
+ .. image:: ../_static/ati-dashboard-bot.png
+|
