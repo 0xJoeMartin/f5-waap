@@ -90,11 +90,17 @@ Navigate to https://www.f5.com/cloud, select login at the top right and finally 
 |
 
 6. Validate JavaScript injection
+-----------------------------------
+
  On the UDF main page, under the BIG-IP, open the JuiceShop link
+
  .. image:: ../_static/agility-udf-ui_2.png
+ 
  Right-click anywhere on the JuiceShaop webpage and select 'View Page Source'.
- On line 3 of the HTML code for this page, immediately following the opening <head> tag you should see the <script> tag injected by the iApp.
+ On line 3 of the HTML code for this page, immediately following the opening ``<head>`` tag you should see the ``<script>`` tag injected by the iApp.
+ 
  .. image:: ../_static/ati-js-pagesource.png
+
 |
 
 Next: |lab2|
