@@ -64,3 +64,20 @@ We will need this cookie in order for automated requests to reach your BIGIP and
 3. Generating Interesting Traffic
 -----------------------------------------------------------
 
+Because the ATI dashboard is a high-level overview of your traffic, individual requests are not reflacted in the graphs and reports.  WE need to generate enough traffic for the graphs to populate and show data.
+
+There are several ways that we can do this.  For a production website that is publicly accessible this will hapen automatically in a matter of minutes.  We can try to mimic that by browsing around on the Juiceshop app in our browser.
+
+Browse around in the JuiceShop app for a few minutes.
+
+Open a terminal and use curl to access your JuiceShop app.  You will need to include the udf.sid cookie in your curl request.
+
+Be sure to replace ``<<your juice shop domain>>`` and ``<<your udf.sid cookie value>>`` with the actual values.
+
+ ``curl 'https://<<your juice shop domain>>/' -H 'Cookie: udf.sid=<<your udf.sid cookie value>>'``
+
+This will only send one request but, we need lots of requests.  Also, this will send the request with the default curl User-Agent string.
+
+If you are on a Linux or Mac computer you can use the following script from the command line to send 300 requests:
+
+ ``for i in `seq 300`; do curl '<<your juice shop domain>>/' -H 'Cookie: udf.sid=<<paste cookie value here>>' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36'; done``
