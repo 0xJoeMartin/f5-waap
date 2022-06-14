@@ -33,14 +33,11 @@ During this lab you can use your own F5 Distributed Cloud account and the associ
 
 Alternatively, you may also you your own BIGIP and your own website but, some of the instructions will have to be adapted accordingly.
 
-The lab instructions include use of various features of the Chrome browser and it is strongly recommended to use Chrome.  However, similar functionality exists in most other browsers.
-
-|
+The lab instructions include use of various features of the Chrome browser and it is strongly recommended to use Chrome.  However, similar functionality exists in most other browsers but, lab instructions will ned to be adjusted accordingly.
 
 Please contact your F5 Sales Engineer/Account Manager if you need more information
-Feedback for this lab can be sent directly to j.martin@f5.com
+Feedback for this lab can be sent directly to j.martin@f5.com.
 
-|
 
 F5 Distributed Cloud Application Threat Insight:
 --------------------------------------------------------------------------
@@ -48,21 +45,20 @@ Account Takeover, Online Fraud, and Webscraping are a problem for many organizat
 
 F5 Distributed Cloud (F5XC) Application Threat Insight provides a high-level overview of application traffic in two primary sections:
   
-  **Device Dashboard** - provides a high-level overview of devices accessing your web applications, including:
-  - Count unique devices over time
-  - Count of devices returning overtime
-  - Session length per device
-  - Device age (how long has this device been known)
-  - ASNs per device
-  - User-Agents per device.
+**Device Dashboard** - provides a high-level overview of devices accessing your web applications, including:
+- Count unique devices over time
+- Count of devices returning overtime
+- Session length per device
+- Device age (how long has this device been known)
+- ASNs per device
+- User-Agents per device.
 
-  **Bot Assessment** - provides a high-level overview of automated traffic to your web applications, including:
-  - Percentage of human traffic versus bot traffic
-  - Request timeline for human and bot traffic
-  - Top ASNs sourcing suspected bot traffic
-  - Top URLs accessed by suspected bots
+**Bot Assessment** - provides a high-level overview of automated traffic to your web applications, including:
+- Percentage of human traffic versus bot traffic
+- Request timeline for human and bot traffic
+- Top ASNs sourcing suspected bot traffic
+- Top URLs accessed by suspected bots
 
-|
 
 Next: |signup|
 
