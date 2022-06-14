@@ -6,7 +6,9 @@ Lab 1: Configuring ATI via the F5 BIGIP iApp
  Navigate to https://www.f5.com/cloud, select login at the top right and finally select your account type to login.
 
  .. note::
-    You can sign up for a free account for the F5 Distributed Cloud in case you don't have an account yet by following the `sign up description <https://github.com/f5devcentral/f5-waap/blob/main/step-1-signup-deploy/voltConsole.rst>`_ or just go directly to the sign up page https://console.ves.volterra.io/signup/usage_plan.
+     If you do not already have an F5 Distributed Cloud account, you can sign up for a free account
+     by following the `sign up description <https://github.com/f5devcentral/f5-waap/blob/main/step-1-signup-deploy/voltConsole.rst>`_
+     or just go directly to the sign up page https://console.ves.volterra.io/signup/usage_plan.
 
  .. image:: ../_static/csd-login.png
 
