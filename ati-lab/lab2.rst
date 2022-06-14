@@ -52,11 +52,11 @@ Scroll down in the request log and look for a request to "dip".  Select this req
 In order to provide additional security for the Juiceshop website, it is only accessible to users who are authenticated to UDF.  Any requests that are sent to your JuiceShop UDF domain name will be blocked before they get to your UDF deployment BIGIP if they do not include your UDF session cookie.
 We will need this cookie in order for automated requests to reach your BIGIP and show up in the ATI dashboard.
  
-*  In the browser devtools select the "Application" tab.
-*  In the Sotrage section of the lefthand menu expand the Cookies section and click on the domain name listed.
-*  Look for a cookie named **udf.sid** and select it.
-*  From the "Cookie Value" pane select the entire cookie value.
-*  Copy the cookie value and paste it into a text editor for later use.
+1.  In the browser devtools, select the "Application" tab.
+2.  In the "Storage" section of the left-hand menu expand the "Cookies" section and click on the domain name listed.
+3.  Look for a cookie named **udf.sid** and select it.
+4.  From the "Cookie Value" pane select the entire cookie value.
+5.  Copy the cookie value and paste it into a text editor for later use.
 
   .. image:: ../_static/ati-copy-cookie.png
 |
