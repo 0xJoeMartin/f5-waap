@@ -29,17 +29,21 @@ Navigate to https://www.f5.com/cloud, select login at the top right and finally 
 3. Download the BIGIP iApp from F5XC
 -----------------------------------------
 
- In the "Manage" section of the left-hand menu, click on "App Configuration" - "Add Application".
+In the "Manage" section of the left-hand menu, click on "App Configuration" - "Add Application".
 
  .. image:: ../_static/ati-add-application.png
 
-|
 
- From the "App Application" slideout select "BIGIP iApp" and click **Next**.
+From the "App Application" slideout select "BIGIP iApp" and click **Next**.
 
- From step 2 click the **Download Template** button. This will download F5_APG.zip; take note of where you download this file and open it.  This should extract **f5.apg.analytics.tmpl**.
+ .. image:: ../_static/ati-addapp-bigip.png
+
+.. note:: 
+    Notice that there are other methods for injecting the ATI JS. These are out of scope for this lab.
+
+From step 2 click the **Download Template** button. This will download F5_APG.zip; take note of where you download this file and open it.  This should extract **f5.apg.analytics.tmpl**.
  
- From step 4 copy the JS tag.
+From step 4 copy the JS tag.
 
  .. image:: ../_static/ati-addapp-iapp.png
 
@@ -48,20 +52,26 @@ Navigate to https://www.f5.com/cloud, select login at the top right and finally 
 4. Import the ATI iApp template:
 ------------------------------------
 
- To access the BIG-IP, on the Class UDF screen, click the link for TMUI under the BIG-IP.  The username and password is **admin / f5DEMOS4u!**.
+To access the BIG-IP, on the Class UDF screen, click the link for TMUI under the BIG-IP.  The username and password is **admin / f5DEMOS4u!**.
 
  .. image:: ../_static/agility-udf-ui_1.png
 
- In your BIG-IP TMUI, go to **Local Traffic->iApps->Templates** and click the **Import...** button.
+|
+
+In your BIG-IP TMUI, go to **Local Traffic->iApps->Templates** and click the **Import...** button.
 
  .. image:: ../_static/ati-iapp-templates.png
 
- In the Import screen, click **Choose File**. From the file window, find and select the "f5.apg.analytics.tmpl" file you downloaded and extracted in the previous step. Click **Upload**.  On the popup window, click **OK** to confirm you want to proceed with installing the template file on the BIGIP.
+|
 
- .. note::
-     Take note that there was already a template named "f5.apg_analytics" that was pre-installed and ships with TMOS 16.1.  The template you just uploaded is named "f5.apg.analytics" and has some slight but important differences from the pre-installed template.
+In the Import screen, click **Choose File**. From the file window, find and select the "f5.apg.analytics.tmpl" file you downloaded and extracted in the previous step. Click **Upload**.  On the popup window, click **OK** to confirm you want to proceed with installing the template file on the BIGIP.
 
- .. image:: ../_static/ati-iapp-templates.png
+ .. figure:: ../_static/ati-iapp-templates.png
+
+     Take note that there was already a template named "f5.apg_analytics" 
+     that was pre-installed and ships with TMOS 16.1.
+     The template you just uploaded is named "f5.apg.analytics" and has some 
+     slight but important differences from the pre-installed template.
 
 |
 
