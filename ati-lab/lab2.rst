@@ -129,7 +129,7 @@ During this time you can use your local terminal to send more cURL requests or m
 
     Please be patient and know that your data will eventully show up in the dashboard.
     
-    While you are waiting you can continue to send traffic to your JuiceShop app.  But remember if you use any ohter methods to send traffic that you must include the **udf.sid** cookie or it will not make it to your UDF BIGIP and so will not be reported to ATI.
+    While you are waiting you can continue to send traffic to your JuiceShop app.  But remember if you use any other methods to send traffic that you must include the **udf.sid** cookie or it will not make it to your UDF BIGIP and so will not be reported to ATI.
 
 
 In your browser return to the F5XC ATI dashboard.  If you have been away from this tab for a while, you may be prompted to reauthenticate.
