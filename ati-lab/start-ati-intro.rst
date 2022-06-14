@@ -49,18 +49,18 @@ Account Takeover, Online Fraud, and Webscraping are a problem for many organizat
 F5 Distributed Cloud (F5XC) Application Threat Insight provides a high-level overview of application traffic in two primary sections:
   
   **Device Dashboard** - provides a high-level overview of devices accessing your web applications, including:
-  * Count unique devices over time
-  * Count of devices returning overtime
-  * Session length per device
-  * Device age (how long has this device been known)
-  * ASNs per device
-  * User-Agents per device.
+  - Count unique devices over time
+  - Count of devices returning overtime
+  - Session length per device
+  - Device age (how long has this device been known)
+  - ASNs per device
+  - User-Agents per device.
 
   **Bot Assessment** - provides a high-level overview of automated traffic to your web applications, including:
-  * percentage of human traffic versus bot traffic
-  * Request timeline for human and bot traffic
-  * Top ASNs sourcing suspected bot traffic
-  * Top URLs accessed by suspected bots
+  - Percentage of human traffic versus bot traffic
+  - Request timeline for human and bot traffic
+  - Top ASNs sourcing suspected bot traffic
+  - Top URLs accessed by suspected bots
 
 |
 
@@ -68,6 +68,6 @@ Next: |signup|
 
 .. |signup| raw:: html
 
-            <a href="https://github.com/f5devcentral/f5-waap/blob/main/csd/lab1.rst" target="_blank">Lab 1: Base Configuration of CSD</a>
+            <a href="./lab1.rst" target="_blank">Lab 1: Downloading and Installing the ATI iApp</a>
 
 
