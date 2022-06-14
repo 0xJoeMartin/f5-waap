@@ -71,7 +71,7 @@ Navigate to https://www.f5.com/cloud, select login at the top right and finally 
  In the New Application Service window, complete the following fields:
  
  .. note::
-     Ensure that you select the "f5.apg.analytics" template that you installed in the previous step.  This should be the first tempalte listed.
+     Ensure that you select the "f5.apg.analytics" template that you installed in the previous step.  This should be the first template listed.
 
  * Enter a name in the Name field.
  * From the Template dropdown, select the "f5.apg.analytics" template.
