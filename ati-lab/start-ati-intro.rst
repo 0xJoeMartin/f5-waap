@@ -19,12 +19,12 @@ What we'll learn
 
 During this hands-on lab you will learn about the following: 
 
-- High level introductions for the use case of Application Traffic Insight (ATI)
-- Login to the F5 XC Console
-- Download, import, and run the latest ATI iApp on your BIGIP
-- Validate the ATI JS injection on the protected website
-- Use various automation tools to generate bot traffic 
-- Review the F5XC ATI dashboard to see a summary of Client/Device Overview and Bot Insights
+ - High level introductions for the use case of Application Traffic Insight (ATI)
+ - Login to the F5 XC Console
+ - Download, import, and run the latest ATI iApp on your BIGIP
+ - Validate the ATI JS injection on the protected website
+ - Use various automation tools to generate bot traffic 
+ - Review the F5XC ATI dashboard to see a summary of Client/Device Overview and Bot Insights
 
 Lab Environment
 ---------------
@@ -46,18 +46,18 @@ Account Takeover, Online Fraud, and Webscraping are a problem for many organizat
 F5 Distributed Cloud (F5XC) Application Threat Insight provides a high-level overview of application traffic in two primary sections:
   
 **Device Dashboard** - provides a high-level overview of devices accessing your web applications, including:
-- Count unique devices over time
-- Count of devices returning overtime
-- Session length per device
-- Device age (how long has this device been known)
-- ASNs per device
-- User-Agents per device.
+ - Count unique devices over time
+ - Count of devices returning overtime
+ - Session length per device
+ - Device age (how long has this device been known)
+ - ASNs per device
+ - User-Agents per device.
 
 **Bot Assessment** - provides a high-level overview of automated traffic to your web applications, including:
-- Percentage of human traffic versus bot traffic
-- Request timeline for human and bot traffic
-- Top ASNs sourcing suspected bot traffic
-- Top URLs accessed by suspected bots
+ - Percentage of human traffic versus bot traffic
+ - Request timeline for human and bot traffic
+ - Top ASNs sourcing suspected bot traffic
+ - Top URLs accessed by suspected bots
 
 
 Next: |signup|
