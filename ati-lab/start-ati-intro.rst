@@ -64,6 +64,6 @@ Next: |signup|
 
 .. |signup| raw:: html
 
-            <a href="./lab1.rst" target="_blank">Lab 1: Downloading and Installing the ATI iApp</a>
+            <a href="./lab1.rst" target="_blank">Lab 1: Configuring and Deploying F5XC Application Threat Insight</a>
 
 
