@@ -1,220 +1,65 @@
-Using the Client Side Defense Dashboard
+Lab 2: Browsers, Automation Tools, and the ATI Dashboard
 =======================================
 
-Lab 2: Mitigate suspicious or allow unsuspicious domains
---------------------------------------------------------
+1. Browser Devtools
+-----------------------------------------------------------
 
-Login to F5 Distributed Cloud using your own account and go to the Client-Side Defense dashboard.
+In your browser switch to the JuiceShop tab.  Open the browser's "Developer Tools".
 
-|
+ .. figure:: ../_static/ati-browser-inspect.png
 
-.. note:: Part of the UDF Deployment is an iRule that both adds the required Telemetry to the Website and some "simulated" malicious JavaScript elements.  If you would like to have a look at this iRule, you can see the files here: |irule|
+    In most browsers the quickest way to do this is to right-click anywhere on the webpage and select "Inspect" (or "Inspect Element") from the pop-up menu.
 
-.. |irule| raw:: html
-
-            <a href=./addClientSideDefense.tcl _target="_irule">addClientSideDefense.tcl</a>
-
-|
-
-Once you logged in, click on *Client-Side Defense*.
-
- .. image:: ../_static/csd-dashboard.png
-
-|
-
-The CSD Dashboard displays the following tabs that you use for displaying data, and for deciding whether to mitigate or allow a suspicious domain.
-
- .. image:: ../_static/csd-tabs.png
-
-*Suspicious Domains:* When a web page with CSD protection is loaded on the end-user’s browser, scripts running on that web page interact with other domains. The Suspicious Domains list displays a list of the domains that those scripts interact with and which CSD detected to be potentially malicious.
-
-*Mitigate List:* Displays a list of domains that the user has assigned for mitigation. When a domain is assigned for mitigation, CSD blocks that domain and it cannot be accessed by any script running on the end-user's browser when accessing a CSD protected web page.
-    
-*Allow List:* Displays a list of domains that the user has decided do not need mitigation and can be allowed free access.
-    
-*All Domains:* When a web page with CSD protection is loaded, scripts running on that web page interact with other domains. The All Domains list displays a list of the domains that those scripts interact with.
-
-|
-
-1. Viewing suspicious domains
+ .. figure:: ../_static/ati-devtools-dock.png
+     
+     It is easiest to view the request log in the network tab if the developer tools window is at the bottom of the browser window rathern than on the side.
  
- Click on suspicious domains to display the list of the potentially malicious domains. "Select Page" on the right allows to filter.
+        
+In the developer tools window, switch to the "Network" tab.
+ 
+ .. image:: ../_static/ati-devtools-network.png
 
- .. image:: ../_static/agility-suspicious-domains.png
-
- .. note:: If you do not see any domains, you may need to wait a few minutes.  Also, refreshing your JuiceShop site page can also help.  The requests are polled and sometimes not all of the requests are reviewed - it is roughly 1 in 5 or 10 requests.  
 |
 
-2. Adding a domain to the Mitigate List or Allow List
+2. Inspecting Requests
+-----------------------------------------------------------
+
+With the developer tools (devtools) Network tab open, clear the request log (if any requests are visible), and then refresh the JuiceShop page.
+|
+Scroll to the top of the request log and select the first request. It should be a request to your JuiceShop \*.access.udf.f5.com domain.
+
+ .. image:: ../_static/ati-devtools-juiceshop.png
+|
+Select this request and click on the "Response" tab.
+
+ .. figure:: ../_static/ati-juiceshop-jstag.png
    
- Go to the row of the relevant domain and select the appropriate action on the right by clicking on the *three dots*. Our example shows how to add the domain jqwereid.online to the Mitigate List. It goes first in the state Added to Mitigated List (green) and change after some time to status Mitigated (blue). 
- Alternatively, you can add domains manually to the Mitigate List or Allow List by going to the Mitigate List or Allow List at the top and, click on *Add domain* and enter the domain name.
-
- .. image:: ../_static/csd-mitigate.png
-
+   Notice the script tag injected by the iApp, and the subsequent request to get that JavaScript.
 |
+Select the request for the javascript and look at the response.  This is the javascript returned by the F5XC ATI servers.  This javascript is generated "on-the-fly" and is unique for every user/session.
 
- Status - Added to Mitigated List
-
- .. image:: ../_static/csd-mitigate-added.png
-
+  .. image:: ../_static/ati-juiceshop-jsrequest.png
 |
-
- Status - Mitigated
-
- .. image:: ../_static/csd-mitigated.png
-
-|
-
-3. Show that requests from scripts to the mitigated domains are blocked
+Scroll down in the request log and look for a request to "dip".  Select this request and then select the "Payload" tab.
  
- Open the JuiceShop page (if not already open) and start the browser's DevTools.
+ .. figure:: ../_static/ati-juiceshop-dip.png
+   
+   This is the XHR request initiated by the ATI JavaScript that reports the device ID and other telemetry to the F5XC ATI servers.
+|
+The payload of this request contains encoded and encrypted data only accessible by the F5XC ATI servers.
+|
+In order to provide additional security for the Juiceshop website, it is only accessible to users who are authenticated to UDF.  Any requests that are sent to your JuiceShop UDF domain name will be blocked before they get to your UDF deployment BIGIP if they do not include your UDF session cookie.
+We will need this cookie in order for automated requests to reach your BIGIP and show up in the ATI dashboard.
+| 
+* In the browser devtools select the "Application" tab.
+* In the Sotrage section of the lefthand menu expand the Cookies section and click on the domain name listed.
+* Look for a cookie named **udf.sid** and select it.
+* From the "Cookie Value" pane select the entire cookie value.
+* Copy the cookie value and paste it into a text editor for later use.
 
- Have the network tab and console tab open as shown below
- 
- .. image:: ../_static/agility-demonstrating-csd_7.png
-
-  Click the Clear button so that there are no files listed in the upper window.  
-  If you need to open the Console, click on the 'Console' along the bottom of the Browser window.
- 
- Copy & paste the following code into the console::
-
-   var s = document.createElement('script')
-   s.src = "https://fountm.online/"
-   document.body.appendChild(s)
-
- Press enter and you should see a message like in the screenshot below and no request in the network tab.
-
- .. image:: ../_static/agility-demonstrating-csd_3.png
-
-Hitting Enter will execute the Pasted commands.
-
-You can also clear the Console and Network screens if you like with the highlighted buttons.
-
- .. image:: ../_static/agility-demonstrating-csd_4.png
-
-This shows that the Domain has been Mitigated.
-
+  .. image:: ../_static/ati-copy-cookie.png
 |
 
-4. Show that requests from scripts to benign domains are allowed
+3. Generating Interesting Traffic
+-----------------------------------------------------------
 
- Copy & paste the following code into the console::
-
-   var s = document.createElement('script')
-   s.src = "https://www.google.com/"
-   document.body.appendChild(s)
-
- Press enter and you should see that the request is successful and shows up in the network tab with the *status 200*
-
- .. image:: ../_static/agility-demonstrating-csd_1.png
-
-
-|1. Configure Logging
----------------------
-
- When you enable CSD, CSD automatically creates an Alert Receiver using the email address you entered for your account on Distributed Cloud Console. CSD also automatically creates an Alert Policy and adds a CSD alerts group to this policy. To ensure that you receive alerts when CSD detects suspicious activity, you need to verify your email on the Alert Receiver.
- Just modify the alert receiver email address accordingly if needed or use a different alert mechanism.
-
- .. image:: ../_static/csd-alert-receiver.png
-
-|
-
-To verify, click the menu on the right and click "Verify Email"
-|
-
- .. image:: ../_static/agility-email-verification_2.png
-
-and then enter the code you recieve in the "Enter Verification code" form
-
- .. image:: ../_static/agility-email-verification_1.png
-
-You can configure other alert systems as well
-
- .. image:: ../_static/csd-alert-receiver-details.png
-
- Example for an alert email "Verify Email" 
-
- .. image:: ../_static/alert-email.png
-
-You can also see alerts interactively:
-
-.. image:: ../_static/agility-alert-dashboard.png
-|
-
-
-Appendix A - Artificially generate suspicious domains
-=====================================================
-
-1. Navigate to a website like https://db.aa419.org/fakebankslist.php to look for fake sites.
-
- .. note:: **DISCLAIMER:** artists against 419 ("aa419") identifies fraudulent websites and makes this data available as a public service. We discourage any form of communication with these websites. If you chose to communicate with them you do so at your own risk.
-
-2. Use any of the following methods to add the code below to the html code of your testing website.
-
- - Local overrides in Chrome Developer Tools as described in **Appendix B** at the end of this document.
- - Local proxy like Charles proxy
- - Or just add the code to your testing web site but don't foget to remove it after the test.
-
-.. note:: For demoing purposes, we have added already a similar code as shown below to the demo app JuiceShop. You can verify it by viewing the source code of the web page.
-
- You can use the code as shown below with the fake domains or replace the fake domains with the ones you want to use for the test::
-  </script><script>(function(){var s=document.createElement("script");var domains=["ganalitis.com","ganalitics.com","gstatcs.com","webfaset.com","fountm.online","pixupjqes.tech","jqwereid.online"];for (var i=0; i < domains.length; ++i){s.src="https://" + domains[i];}})();</script>
-
- .. note:: The browser doesn't send a request to the specified domains by adding or injecting the code as shown above.
-
-|
-
- Example what you should see when you view the source code of the page.
-
- .. image:: ../_static/csd-view-source-color.png
-
-|
-
-
-Appendix B - Injection using local Overrides in Chrome
-======================================================
-
-.. note:: This injection method can be used to inject code locally on your browser. The following example shows you how to inject code to artificially generate suspicious domains but of course you can also inject the CSD JavaScript from your tenant in addition, to test for instance a website you don't own. **The DevTools need to be kept open for the test.**
-
-Set up local Overrides in Chrome DevTools
------------------------------------------
-
-#. Open Chrome DevTools.
-#. Click on the *Sources* tab.
-#. Click on the *Overrides* tab.
-#. Click on *Select folder for overrides*.
-
- .. image:: ../_static/csd-select-folder-overrides.png
-
-|
-
-5. Select which directory you want to save your changes to.
-#. At the top of your window, click **Allow** to give DevTools read and write access to this directory.
-#. Make sure *"Enable Local Overrides"* is checked.
-
- .. image:: ../_static/csd-select-folder-overrides-selected.png
-
-|
-
-8. Click on the *Network tab*.
-#. Open the page, in this example https://arcadia.emea.f5se.com/
-#. Select the page or a file like index.html that you want to override. In our example "arcadia.emea.f5se.com". Just refresh if you don’t see it in the network tab.
-
- .. image:: ../_static/csd-select-page.png
-
-|
-
-11. Right click on the code on the right side and select "Save for overrides".
-
- .. image:: ../_static/csd-save-for-overrides.png
-
-|
-
-12. Make your code changes on the right side.
- 
- .. image:: ../_static/csd-add-injection-code.png
-
- **And make sure you save your changes afterwards e.g. with Ctrl+S or Command+S!**
-
-.. note:: You won't see the overwritten code when you click on *view source code* in the page. If you want to check if the overwrite works, you can e.g. modifiy a title or a text on the page to see the changes on the screen.

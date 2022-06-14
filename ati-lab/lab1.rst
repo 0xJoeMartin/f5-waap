@@ -1,5 +1,5 @@
-Lab 1: Configuring ATI via the F5 BIGIP iApp
-=====================================================
+Lab 1: Configuring and Deploying F5XC Application Threat Insight
+==================================================================
 
 1. Login
 -----------
