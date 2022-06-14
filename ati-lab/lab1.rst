@@ -36,10 +36,8 @@ In the "Manage" section of the left-hand menu, click on "App Configuration" - "A
 
 From the "App Application" slideout select "BIGIP iApp" and click **Next**.
 
- .. image:: ../_static/ati-addapp-bigip.png
-
-.. note:: 
-    Notice that there are other methods for injecting the ATI JS. These are out of scope for this lab.
+ .. figure:: ../_static/ati-addapp-bigip.png
+     Notice that there are other methods for injecting the ATI JS. These are out of scope for this lab.
 
 From step 2 click the **Download Template** button. This will download F5_APG.zip; take note of where you download this file and open it.  This should extract **f5.apg.analytics.tmpl**.
  
