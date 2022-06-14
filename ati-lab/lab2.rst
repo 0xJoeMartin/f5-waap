@@ -90,7 +90,7 @@ If you are on a Linux or Mac computer you can use the following script from the 
 
 If you are on a Windows computer you can use the following script from the command line to send 300 requests:
  
- ``FOR /L %I IN (1,1,300) DO curl '<<your juice shop domain>>/' -H 'Cookie: udf.sid=<<paste cookie value here>>' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36'``
+ ``FOR /L %I IN (1,1,300) DO curl '**<<your juice shop domain>>**/' -H 'Cookie: udf.sid=<<paste cookie value here>>' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36'``
 
 Repeat this a few times to send more than 1000 requests.
 
