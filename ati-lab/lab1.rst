@@ -20,7 +20,9 @@ Navigate to https://www.f5.com/cloud, select login at the top right and finally 
 
  .. image:: ../_static/ati-all-services.png
 
- Enable Application Traffic Insight (if it is not already enabled in the tenant.
+|
+
+ Enable Application Traffic Insight (if it is not already enabled in the tenant).
 
 |
 
@@ -30,6 +32,8 @@ Navigate to https://www.f5.com/cloud, select login at the top right and finally 
  In the "Manage" section of the left-hand menu, click on "App Configuration" - "Add Application".
 
  .. image:: ../_static/ati-add-application.png
+
+|
 
  From the "App Application" slideout select "BIGIP iApp" and click **Next**.
 
