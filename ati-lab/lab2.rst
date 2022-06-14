@@ -68,16 +68,58 @@ Because the ATI dashboard is a high-level overview of your traffic, individual r
 
 There are several ways that we can do this.  For a production website that is publicly accessible this will hapen automatically in a matter of minutes.  We can try to mimic that by browsing around on the Juiceshop app in our browser.
 
+Browser
+^^^^^^^^^
+
 Browse around in the JuiceShop app for a few minutes.
 
-Open a terminal and use curl to access your JuiceShop app.  You will need to include the udf.sid cookie in your curl request.
+cURL
+^^^^^^^^^^
+
+Open a terminal on your computer and use curl to send requests your JuiceShop app.  You will need to include the udf.sid cookie in your curl request.
 
 Be sure to replace ``<<your juice shop domain>>`` and ``<<your udf.sid cookie value>>`` with the actual values.
 
  ``curl 'https://<<your juice shop domain>>/' -H 'Cookie: udf.sid=<<your udf.sid cookie value>>'``
 
-This will only send one request but, we need lots of requests.  Also, this will send the request with the default curl User-Agent string.
+This will only send one request.  You could just sedn this command over and over but, we need lots of requests.  Also, this will send the request with the default curl User-Agent string making it very obvious that this is an automated request.
 
 If you are on a Linux or Mac computer you can use the following script from the command line to send 300 requests:
 
  ``for i in `seq 300`; do curl '<<your juice shop domain>>/' -H 'Cookie: udf.sid=<<paste cookie value here>>' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36'; done``
+
+Repeat this a few times to send more than 1000 requests.
+
+Even though we are sending a valid User-Agent string, cURL is not able to process JavaScript and so it is still very easy to determine that the requests it sends are automated.
+
+Selenium
+^^^^^^^^^^
+
+Selenium is a browser automation tool often used by organizations to test their applications for functionality and performance.  It has the ability to automate all of the major browsers.
+
+Because Selenium is driving a real browser it has the ability to load the entire page, all of the resources on it (CSS, JS, images, etc.) and process any JavaScript.  It is, in fact, a real browser.
+
+Return to the UDF Lab console and select the WebShell access method for the LAMP server.
+
+In the WebShell window change to the /home/ubuntu directory.
+
+ ``cd /home/ubuntu``
+
+You will now run a python Selenium Script that will send requests to your JuiceShop app.
+
+In the WebShell window enter the following command:
+ ``python juiceshop-bot.py``
+
+ When prompted paste in your JuiceShop UDF URL for the "Target URL", and your "UDF Session Cookie" value. For "Request Count" enter 1000.
+
+ .. image:: ../_static/ati-pysel-cmd.png
+
+The script will start and a log will appear tracking the progress of the script.  The script will take several minutes to complete.
+
+ .. image:: ../_static/ati-pysel-cmd.png
+
+During this time you can use your local terminal to send more cURL requests or manually browse Juiceshop with your browser.
+
+4. Reviewing Data in the Application Threat Insights Dashboard
+----------------------------------------------------------------
+
