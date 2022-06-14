@@ -68,13 +68,14 @@ Navigate to https://www.f5.com/cloud, select login at the top right and finally 
 
  .. image:: ../_static/ati-iapp-create.png
 
- In the New Application Service window, complete the following fields:
+ In the New Application Service window, select the "f5.apg.analytics" template from the Template dropdown.
  
  .. note::
      Ensure that you select the "f5.apg.analytics" template that you installed in the previous step.  This should be the first template listed.
 
+ Complete the following fields:
+
  * Enter a name in the Name field.
- * From the Template dropdown, select the "f5.apg.analytics" template.
  * In the JS Injection Configuration, paste the JS tag that you copied from the F5XC ATI dashboard.
  * In the Virtual Server Configuration, move the "Juice_Shop_VS" to the selected virtual servers but selecting it and clicking the "<<" button.
 
@@ -96,8 +97,8 @@ Navigate to https://www.f5.com/cloud, select login at the top right and finally 
 
  .. image:: ../_static/agility-udf-ui_2.png
  
- Right-click anywhere on the JuiceShaop webpage and select 'View Page Source'.
- On line 3 of the HTML code for this page, immediately following the opening ``<head>`` tag you should see the ``<script>`` tag injected by the iApp.
+ Right-click anywhere on the JuiceShop webpage and select 'View Page Source'.
+ On line 3 of the HTML code for this page, immediately following the opening ``<head>`` tag, you should see the ``<script>`` tag injected by the iApp.
  
  .. image:: ../_static/ati-js-pagesource.png
 
