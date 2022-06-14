@@ -108,6 +108,7 @@ In the WebShell window change to the /home/ubuntu directory.
 You will now run a python Selenium Script that will send requests to your JuiceShop app.
 
 In the WebShell window enter the following command:
+
  ``python juiceshop-bot.py``
 
  When prompted paste in your JuiceShop UDF URL for the "Target URL", and your "UDF Session Cookie" value. For "Request Count" enter 1000.
@@ -116,7 +117,7 @@ In the WebShell window enter the following command:
 
 The script will start and a log will appear tracking the progress of the script.  The script will take several minutes to complete.
 
- .. image:: ../_static/ati-pysel-cmd.png
+ .. image:: ../_static/ati-pysel-running.png
 
 During this time you can use your local terminal to send more cURL requests or manually browse Juiceshop with your browser.
 
