@@ -7,13 +7,11 @@ Prerequisites
 -------------
 
 
-1. An account for F5 Distributed Cloud and a tenant with Client-Side Defense add-on capability provisioned.
+1. An account for **F5 Distributed Cloud (F5XC)** and a tenant with **Application Traffic Insight (ATI)** provisioned.
 
-2. A website that is accessible via the internet and where you have the rights to add the JavaScript tag. Alternativeley you can find instructions in the Appendix how to inject the JavaScript tag for testing purposes with the Chrome browser.
-  
-For *F5 SEs* the JavaScript tag was already added to the demo application and you can find the details and login instructions for the f5-sales-demo tenant further down in the lab guide. 
+2. An F5 UDF Account to deploy the "F5XC ATI Lab" blueprint. Alternatively, you can import the iApp to your own BIGIP and use F5XC ATI for your own website.
 
-You can sign up for a free account for the F5 Distributed Cloud in case you don't have an account yet by following the `sign up description <https://github.com/f5devcentral/f5-waap/blob/main/step-1-signup-deploy/voltConsole.rst>`_ or just go directly to the `sign up page <https://console.ves.volterra.io/signup/usage_plan>`_
+You can sign up for a free account for the F5 Distributed Cloud by following the `sign up description <https://github.com/f5devcentral/f5-waap/blob/main/step-1-signup-deploy/voltConsole.rst>`_ or just go directly to the `sign up page <https://console.ves.volterra.io/signup/usage_plan>`_
 
 
 What we'll learn
@@ -23,34 +21,46 @@ During this hands-on lab you will learn about the following:
 
 - High level introductions for the use case of Application Traffic Insight (ATI)
 - Login to the F5 XC Console
-- Configure ATI, setup logging and add the JavaScript tag to the web server
-- Check if the telemetry data are sent to F5
-- Using the ATI dashboard to review traffic summary and Bot Insight
+- Download, import, and run the latest ATI iApp on your BIGIP
+- Validate the ATI JS injection on the protected website
+- Use various automation tools to generate bot traffic 
+- Review the F5XC ATI dashboard to see a summary of Client/Device Overview and Bot Insights
 
 Lab Environment
 ---------------
 
-During this lab you can use your own F5 Distributed Cloud account and your own application (origin server) that you are going to protect with CSD. Alternatively you can also use the F5 sales-demo application https://shop.sales-demo.f5demos.com where I've already added the required JavaScript tag for CSD. 
+During this lab you can use your own F5 Distributed Cloud account and the associated F5 UDF blueprint to demo F5XC Application Threat Insights.
+
+Alternatively, you may also you your own BIGIP and your own website but, some of the instructions will have to be adapted accordingly.
+
+The lab instructions include use of various features of the Chrome browser and it is strongly recommended to use Chrome.  However, similar functionality exists in most other browsers.
 
 |
 
-Please contact your F5 Sales Engineer/Account Manager if you need more information and please send any feedback for this lab to j.martin@f5.com
+Please contact your F5 Sales Engineer/Account Manager if you need more information
+Feedback for this lab can be sent directly to j.martin@f5.com
 
 |
 
-F5 Distributed Cloud Application Threat Insight: Prevent Skimming and Formjacking
+F5 Distributed Cloud Application Threat Insight:
 --------------------------------------------------------------------------
-Like credit card skimming in the physical world, cybercriminals have developed attacks to take ownership of legitimate websites and install digital skimming to steal credit card numbers, social security numbers, national identity numbers, names, addresses, login credentials, and other personally identifiable information.
+Account Takeover, Online Fraud, and Webscraping are a problem for many organizations.  Identifying unique devices accessing your web applications and understanding the relationship between those devices and users, accounts, and where those devices are accessing your site from can help identify suspicious activity.  Additionally, gaining visibility into what traffic is automated can quickly and drastically reduce unwanted and/or malicious activity.  
 
-Chief information security officers (CISOs) face a client-side security gap that puts their customers privacy and financial well-being at risk. With Magecart-like criminal attacks against websites causing massive breaches, government fines, and loss of customer confidence, the challenge of keeping customers safe online needs urgent attention.
+F5 Distributed Cloud (F5XC) Application Threat Insight provides a high-level overview of application traffic in two primary sections:
+  
+  **Device Dashboard** - provides a high-level overview of devices accessing your web applications, including:
+  * Count unique devices over time
+  * Count of devices returning overtime
+  * Session length per device
+  * Device age (how long has this device been known)
+  * ASNs per device
+  * User-Agents per device.
 
-Client-Side Monitoring, Detection, and Mitigation
--------------------------------------------------
-Distributed Cloud Client-Side Defense has two core components that establish its efficacy:
-
-JavaScript that captures signals and a machine learning analysis service that processes those signals.
-
-.. image:: ../_static/csd-diagram.png
+  **Bot Assessment** - provides a high-level overview of automated traffic to your web applications, including:
+  * percentage of human traffic versus bot traffic
+  * Request timeline for human and bot traffic
+  * Top ASNs sourcing suspected bot traffic
+  * Top URLs accessed by suspected bots
 
 |
 

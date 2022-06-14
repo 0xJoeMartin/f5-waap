@@ -99,4 +99,4 @@ Next: |lab2|
 
 .. |lab2| raw:: html
 
-            <a href="./lab2.rst" target="_blank">Lab 2: Browsers and Automation Tools</a>
+            <a href="./lab2.rst" target="_blank">Lab 2: Browsers, Automation Tools, and the ATI Dashboard</a>
